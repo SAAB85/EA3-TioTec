@@ -13,9 +13,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class EvaluacionViewModel(application: Application) : AndroidViewModel(application) {
+class EvaluacionViewModel(
+    application: Application,
+    private val repositorio: TioTecRepository
+) : AndroidViewModel(application) {
 
-    private val repositorio = TioTecRepository(application)
+    constructor(application: Application) : this(application, TioTecRepository(application))
 
     private val _uiState = MutableStateFlow(EvaluacionUiState())
     val uiState: StateFlow<EvaluacionUiState> = _uiState.asStateFlow()

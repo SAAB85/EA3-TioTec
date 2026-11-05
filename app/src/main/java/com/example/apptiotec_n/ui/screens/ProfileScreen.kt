@@ -27,7 +27,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import com.example.apptiotec_n.navigation.Screen
 import com.example.apptiotec_n.ui.utils.copiarImagenAlPerfil
 import com.example.apptiotec_n.viewmodel.MainViewModel
@@ -38,7 +37,6 @@ import java.io.File
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
-    navController: NavController,
     viewModel: MainViewModel,
     perfilViewModel: PerfilViewModel = viewModel()
 ) {

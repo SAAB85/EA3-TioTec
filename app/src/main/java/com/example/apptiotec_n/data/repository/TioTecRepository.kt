@@ -8,9 +8,9 @@ import com.example.apptiotec_n.model.Perfil
 import com.example.apptiotec_n.model.Respuesta
 import kotlinx.coroutines.flow.Flow
 
-class TioTecRepository(context: Context) {
+class TioTecRepository(private val baseDatos: AppDatabase) {
 
-    private val baseDatos = AppDatabase.obtener(context)
+    constructor(context: Context) : this(AppDatabase.obtener(context))
 
     val perfil: Flow<Perfil?> = baseDatos.perfilDao().observarPerfil()
     val evaluaciones: Flow<List<Evaluacion>> = baseDatos.evaluacionDao().observarTodas()

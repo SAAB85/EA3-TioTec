@@ -11,9 +11,12 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class PerfilViewModel(application: Application) : AndroidViewModel(application) {
+class PerfilViewModel(
+    application: Application,
+    private val repositorio: TioTecRepository
+) : AndroidViewModel(application) {
 
-    private val repositorio = TioTecRepository(application)
+    constructor(application: Application) : this(application, TioTecRepository(application))
 
     private val _uiState = MutableStateFlow(PerfilUiState())
     val uiState: StateFlow<PerfilUiState> = _uiState.asStateFlow()
