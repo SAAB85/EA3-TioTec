@@ -15,3 +15,7 @@
 local.properties
 /.idea/
 graphify-out/
+# Firma de release: credenciales y keystore no se versionan
+keystore.properties
+*.jks
+*.keystore
