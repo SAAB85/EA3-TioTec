@@ -6,11 +6,11 @@ hábitos de respaldo, actualización, autenticación y recuperación de cuentas,
 recomendaciones claras para reducir riesgos.
 
 Proyecto académico de la asignatura **DSY1105 — Desarrollo de Aplicaciones Móviles**,
-Evaluación Parcial 2, DUOC UC.
+Evaluación Parcial 4 (Experiencia de Aprendizaje 3), DUOC UC.
 
 ## Repositorio
 
-https://github.com/NicolasRJ6/AppTioTec_N
+https://github.com/SAAB85/EA3-TioTec
 
 ## Integrantes
 
@@ -153,6 +153,31 @@ Para compilar desde la terminal:
 ```
 ./gradlew assembleDebug
 ```
+
+Para generar el APK firmado de entrega:
+
+```
+./gradlew assembleRelease
+```
+
+El APK firmado queda en `app/build/outputs/apk/release/app-release.apk`. La firma usa el
+keystore `tiotec-release.jks` (alias `tiotec`) y las credenciales de
+`keystore.properties`. Es una clave de demostración académica: en un proyecto real
+no se subiría al repositorio. Si no existe `keystore.properties`, el build genera
+`app-release-unsigned.apk` y el resto del proyecto compila igual.
+
+El keystore y `keystore.properties` no se incluyen en el zip de entrega; el APK
+firmado se entrega aparte.
+
+## Pruebas
+
+```
+./gradlew :app:testDebugUnitTest    # 32 pruebas unitarias de la app
+cd microservicio && mvn test        # 6 pruebas del microservicio
+```
+
+Las pruebas de la app usan Kotest, MockK y corrutinas de prueba; las del
+microservicio usan `@SpringBootTest` con MockMvc y H2 en memoria.
 
 ## Tecnologías
 
