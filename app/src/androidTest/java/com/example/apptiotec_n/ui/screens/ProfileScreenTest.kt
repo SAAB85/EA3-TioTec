@@ -20,11 +20,12 @@ class ProfileScreenTest {
     fun muestraElFormularioDelPerfil() {
         val aplicacion = ApplicationProvider.getApplicationContext<Application>()
         val perfilViewModel = PerfilViewModel(aplicacion)
+        val mainViewModel = MainViewModel()
 
         composeRule.setContent {
             AppTioTec_NTheme {
                 ProfileScreen(
-                    viewModel = MainViewModel(),
+                    viewModel = mainViewModel,
                     perfilViewModel = perfilViewModel
                 )
             }

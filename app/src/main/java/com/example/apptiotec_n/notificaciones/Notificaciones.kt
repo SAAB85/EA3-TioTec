@@ -1,6 +1,7 @@
 package com.example.apptiotec_n.notificaciones
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -34,6 +35,7 @@ fun tienePermisoDeNotificaciones(contexto: Context): Boolean {
     return estado == PackageManager.PERMISSION_GRANTED
 }
 
+@SuppressLint("MissingPermission") // tienePermisoDeNotificaciones() ya valida POST_NOTIFICATIONS
 fun mostrarRecordatorio(contexto: Context, hora: String) {
     if (!tienePermisoDeNotificaciones(contexto)) return
 
