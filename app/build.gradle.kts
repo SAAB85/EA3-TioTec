@@ -1,16 +1,19 @@
-import java.io.FileInputStream
 import java.util.Properties
-
-val keystoreProperties = Properties()
-val keystorePropertiesFile = rootProject.file("keystore.properties")
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-}
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
+}
+
+// La firma de release se toma de keystore.properties, que no se versiona.
+// Si el archivo no existe, el APK de release se genera sin firmar y el resto
+// del build funciona igual.
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties().apply {
+    if (keystorePropertiesFile.exists()) {
+        keystorePropertiesFile.inputStream().use { load(it) }
+    }
 }
 
 android {
@@ -30,8 +33,8 @@ android {
     }
 
     signingConfigs {
-        create("release") {
-            if (keystorePropertiesFile.exists()) {
+        if (keystorePropertiesFile.exists()) {
+            create("release") {
                 storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
                 storePassword = keystoreProperties.getProperty("storePassword")
                 keyAlias = keystoreProperties.getProperty("keyAlias")
@@ -41,7 +44,9 @@ android {
     }
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
+            if (keystorePropertiesFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
             optimization {
                 enable = false
             }
