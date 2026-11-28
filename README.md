@@ -211,3 +211,21 @@ https://trello.com/b/f0eKbBfy/ep2-tiotec
 | Integración con el microservicio | `ConsejoApiService` + `ConsejosServidorRepository` consumen `/api/consejos`; `ConsejosServidorScreen` permite listar, crear, editar y eliminar con avisos de error |
 | Pruebas | 32 pruebas unitarias de la app con Kotest, JUnit5, MockK y corrutinas de prueba; 6 pruebas del microservicio |
 | Microservicio | Spring Boot 3.5 con CRUD de consejos en `/api/consejos`, validación y base H2 persistente |
+
+## Relación con las actividades del curso
+
+| Actividad o guía | Dónde se aplicó |
+|---|---|
+| EA1 — Kotlin, POO y corrutinas (guías 2–5) | `model/`, `viewmodel/` y repositorios |
+| Guía 7 — MVVM y trabajo colaborativo | `viewmodel/`, `ui/`, repositorio Git y tablero Trello |
+| Guía 8 — Compose y Material 3 | `ui/theme/` y todas las pantallas |
+| Guía 9 — Adaptabilidad del diseño | `ui/HomeScreen*` y `ui/utils/WindowSizeUtils.kt` (actividad de Window Size Classes) |
+| Guía 10 — Navegación | `navigation/Screen.kt`, `NavHost` y `HomeScreen` con `NavigationDrawer` |
+| Guía 11 — Formularios y validación | `ProfileScreen` + `PerfilViewModel`, `EvaluacionScreen` + `EvaluacionViewModel` |
+| Guía 12 — Estados, animaciones y DataStore | `AjustesRepository` y `AnimatedVisibility` en las pantallas |
+| Guía 13 — Recurso nativo | Galería en `ProfileScreen` (`ActivityResultContracts.GetContent`) |
+| Guía 14 — API REST con Retrofit | `ApiService`, `ConsejosRepository` y `ConsejosScreen` |
+| Guía 15 — Pruebas unitarias y de UI | `app/src/test/` y `ProfileScreenTest` |
+| Actividad 2.5 — Persistencia con Room | `data/local/` (`@Entity`, DAOs y `@Database`) |
+| Actividad 3.3 — APK firmado | `signingConfig` en `app/build.gradle.kts` y `tiotec-release.jks` |
+| EA3 / EP4 — Microservicio Spring Boot | `microservicio/` (entidad, repositorio, controlador y H2) |
