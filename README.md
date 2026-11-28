@@ -166,8 +166,8 @@ keystore `tiotec-release.jks` (alias `tiotec`) y las credenciales de
 no se subiría al repositorio. Si no existe `keystore.properties`, el build genera
 `app-release-unsigned.apk` y el resto del proyecto compila igual.
 
-El keystore y `keystore.properties` no se incluyen en el zip de entrega; el APK
-firmado se entrega aparte.
+El keystore y `keystore.properties` no se versionan en GitHub, pero el zip de
+entrega sí los incluye junto al APK firmado, como pide la rúbrica (IE3.3.1).
 
 ## Pruebas
 
